@@ -1,0 +1,51 @@
+/* Select Industrial Services — custom styles layered on top of Tailwind (Play CDN).
+   Brand colours are defined in the inline tailwind.config in each page <head>. */
+
+:root {
+  --brand:   #0E72C5; /* clinical blue  */
+  --verify:  #16A34A; /* hygiene green  */
+  --steel:   #475569; /* industrial grey */
+  --ink:     #0F172A; /* heading near-black */
+  --redline: #DC2626; /* zone demarcation */
+}
+
+html { scroll-behavior: smooth; }
+
+/* Honour users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation: none !important; transition: none !important; }
+}
+
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+/* One-time entrance fade, played on load. Pure CSS so content is NEVER left
+   hidden — it always settles at full opacity, even with JS disabled or mid-capture.
+   `both` fill-mode means it ends (and stays) at the visible `to` state. */
+@keyframes reveal-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.reveal { animation: reveal-in .6s ease both; }
+
+/* Hero overlay so headline text stays readable over any background image */
+.hero-overlay {
+  background:
+    linear-gradient(180deg, rgba(15,23,42,.72) 0%, rgba(15,23,42,.55) 45%, rgba(14,114,197,.55) 100%);
+}
+
+/* Decorative "redline" rule used as a section accent */
+.redline-rule { height: 4px; background: var(--redline); border-radius: 2px; }
+
+/* Active nav link underline */
+.nav-link.is-active { color: var(--brand); }
+.nav-link.is-active::after {
+  content: ""; display: block; height: 2px; background: var(--brand);
+  border-radius: 2px; margin-top: 2px;
+}
+
+/* Card hover lift */
+.lift { transition: transform .2s ease, box-shadow .2s ease; }
+.lift:hover { transform: translateY(-4px); box-shadow: 0 12px 30px -12px rgba(15,23,42,.25); }
+
+/* Accessible focus ring on interactive elements */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 3px solid #93C5FD; outline-offset: 2px; border-radius: 4px;
+}
