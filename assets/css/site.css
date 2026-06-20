@@ -46,6 +46,10 @@ body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; 
 .lift:hover { transform: translateY(-4px); box-shadow: 0 12px 30px -12px rgba(15,23,42,.25); }
 
 /* Accessible focus ring on interactive elements */
-a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, summary:focus-visible {
   outline: 3px solid #93C5FD; outline-offset: 2px; border-radius: 4px;
 }
+
+/* Native FAQ accordion — hide the default disclosure triangle */
+summary { list-style: none; }
+summary::-webkit-details-marker { display: none; }
